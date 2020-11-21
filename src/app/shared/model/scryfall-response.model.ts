@@ -3,4 +3,6 @@ interface ImageUris {
 }
 export interface IScryfallResponse {
   image_uris: ImageUris;
+
+  data: IScryfallResponse[];
 }

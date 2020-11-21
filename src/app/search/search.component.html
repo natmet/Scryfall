@@ -1,7 +1,9 @@
 <input [(ngModel)]="busqueda" type="text" placeholder="Buscar" />
+<br /><br /><br />
 <input (click)="buscar()" type="submit" value="Buscar" />
+<br /><br /><br />
+<input (click)="buscarFuzzy()" type="submit" value="Busqueda fuzzy" />
 
 <img [src]="urlImagen" />
 
-<p>{{ 5500 | currency: "EUR" }}</p>
-{{ fecha | date: "medium" }}
+<img *ngFor="let url of urlImagenes" [src]="url" />

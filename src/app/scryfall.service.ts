@@ -14,10 +14,11 @@ export class ScryfallService {
       exact: nombreCarta,
     };
     //
-    const response = this.httpClient.get<IScryfallResponse>(
+    const response: Observable<IScryfallResponse> = this.httpClient.get<IScryfallResponse>(
+      //Estoy usando Template Literals http://es6-features.org/#StringInterpolation
       `${this.url}/cards/named`,
+      //Estoy usando property shorthand http://es6-features.org/#PropertyShorthand
       { params }
-      //observe : '';
     );
     //response es un objeto de tipo HttpResponse https://angular.io/api/common/http/HttpResponse
     return response;
@@ -25,8 +26,17 @@ export class ScryfallService {
 
   //TODO
   //Devolver lista de cartas
-
   fuzzy(nombreCarta: string) {
-    throw new Error('Metodo sin implementar');
+    const params = {
+      q: nombreCarta,
+    };
+    const response: Observable<IScryfallResponse> = this.httpClient.get<IScryfallResponse>(
+      // Estoy usando Template Literals http://es6-features.org/#StringInterpolation
+      `${this.url}/cards/search`,
+      // Estoy usando property shorthand http://es6-features.org/#PropertyShorthand
+      { params }
+    );
+    // response es un objeto de tipo HttpResponse https://angular.io/api/common/http/HttpResponse
+    return response;
   }
 }
